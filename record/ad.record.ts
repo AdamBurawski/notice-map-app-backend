@@ -4,7 +4,7 @@ import { pool } from "../utils/db";
 import { ValidationError } from "../utils/errors";
 import { v4 as uuid } from "uuid";
 
-type AdRecordResults = [AdEntity, FieldPacket[]];
+type AdRecordResults = [AdEntity[], FieldPacket[]];
 
 export class AdRecord implements AdEntity {
   public id: string;
@@ -49,21 +49,24 @@ export class AdRecord implements AdEntity {
   }
 
   static async getOne(id: string): Promise<AdRecord | null> {
-    const [results] = await pool.execute("SELECT * FROM `ads` WHERE id = :id", {
-      id,
-    });
+    const [results] = (await pool.execute(
+      "SELECT * FROM `ads` WHERE id = :id",
+      {
+        id,
+      }
+    )) as AdRecordResults;
     return results.length === 0 ? null : new AdRecord(results[0]);
   }
   static async findAll(name: string): Promise<SimpleAdEntity[]> {
-    const [results] = await pool.execute(
+    const [results] = (await pool.execute(
       "SELECT * FROM `ads` WHERE `name` LIKE :search",
       // "SELECT * FROM `ads`",
       {
         search: `%${name}%`,
       }
-    );
+    )) as AdRecordResults;
 
-    return results.map((result: any) => {
+    return results.map((result) => {
       const { id, lat, lon } = result;
       return {
         id,
