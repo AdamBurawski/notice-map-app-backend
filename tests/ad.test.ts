@@ -1,4 +1,4 @@
-import { pool } from "../utlis/db";
+import { pool } from "../utils/db";
 import { AdRecord } from "../record/ad.record";
 import { AdEntity } from "../types";
 

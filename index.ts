@@ -1,7 +1,7 @@
 import express, { json } from "express";
 import cors from "cors";
 import "express-async-errors";
-import { ValidationError, handleError } from "./utlis/errors";
+import { ValidationError, handleError } from "./utils/errors";
 import { rateLimit } from "express-rate-limit";
 import { adRouter } from "./routers/ad.router";
 
