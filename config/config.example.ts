@@ -1,8 +1,8 @@
 // export const config = {
 // dbHost: "localhost",
-// user: "test",
-// password: "test1",
-// database: "testDB",
-// decimalNumbers: true,
-// namedPlaceholders: true,
+// dbUser: "test",
+// dbPassword: "test1",
+// dbDatabase: "testDB",
+// dbDecimalNumbers: true,
+// dbNamedPlaceholders: true,
 // };
