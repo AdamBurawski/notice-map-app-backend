@@ -1,4 +1,4 @@
-import express, { json } from "express";
+import express, { Router, json } from "express";
 import cors from "cors";
 import "express-async-errors";
 import { ValidationError, handleError } from "./utils/errors";
@@ -21,6 +21,12 @@ app.use(
 );
 
 //Routes...
+
+//na serwerze:
+// const router = Router()
+// router.use("/ad", adRouter);
+// app.use("/api", router)
+
 app.use("/ad", adRouter);
 
 // app.get("/", async (req, res) => {
